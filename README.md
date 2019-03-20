@@ -1,2 +1,2 @@
 # Algorithm-Design
-design by myself
+自己写的一些小算法！
