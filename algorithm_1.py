@@ -1,7 +1,7 @@
 from collections import Counter, defaultdict
 
 # 以下是用户id对应的技能爱好，比如(0, "Hadoop")表示0号用户爱好是Hadoop
-# 根据以下数据集，给一个用户id，算出与该用户技能爱好最多的其他用户（可能有多个）
+# 根据以下数据集，给一个用户id，算出与该用户有最多共同技能爱好的其他用户（可能有多个）
 interests = [
  (0, "Hadoop"), (0, "Big Data"), (0, "HBase"), (0, "Java"),
  (0, "Spark"), (0, "Storm"), (0, "Cassandra"),
