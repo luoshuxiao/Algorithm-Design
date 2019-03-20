@@ -132,6 +132,46 @@ test_data = [(1, 150), (4, 123), (130, 2), (148, 8)]
 cla = ['love', 'love', 'action', 'action']
 data = (45, 46)
 k = 3
-
 print(my_knn(test_data, cla, data, k))
 
+
+# five :  有一千盏灯，全都是灭的，第一个人从第一盏灯开始全都按一下，第二个人
+#         从第二盏灯开始往后的等都按一下，第三个人从第三盏灯开始往后的等都按
+#         一下，以此类推，有一千个人，问最后有多少灯是亮着的，多少灯是灭的
+# 0 代表灯是灭的状态 , 1 代表灯是亮的状态
+a = [0 for _ in range(1000)]
+for i in range(1000):
+    i += 1
+    for j in range(1, 1001):
+        if i//j == 0:
+            a[i-1] = 0 if a[i-1] else 1
+print(a)
+print(f'灭的灯共:{a.count(0)}盏')
+print(f'亮的灯共:{a.count(1)}盏')
+
+
+# six :  替换某个字符串中的一个或者多个子串
+# 方法一
+def str_replace(ostr, old_str, new_str):
+    list_s = ostr.split(old_str)
+    str_result = ''
+    for strs in list_s[:-1]:
+        str_result += strs+new_str
+    return str_result+list_s[-1]
+a = 'heluollo luoshuxiaoluoll'
+print(str_replace(a, 'luo', '##'))
+
+
+# 方法二
+def str_replace1(ostr, old_str, new_str):
+    return ostr.replace(old_str, new_str)
+print(str_replace1(a, 'luo', '##'))
+
+
+# seven : 快速排序算法
+def my_sort(list1):
+    for i in range(len(list1)):
+        for j in range(i+1, len(list1)):
+            if list1[i] > list1[j]:
+                list1[i], list1[j] = list1[j], list1[i]
+    return list1
