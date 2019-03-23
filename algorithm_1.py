@@ -175,3 +175,31 @@ def my_sort(list1):
             if list1[i] > list1[j]:
                 list1[i], list1[j] = list1[j], list1[i]
     return list1
+
+
+# eight :  100课糖随机分配给10个小朋友，求糖果获得第n多的小朋友获得的糖果（不能用语言自带的排序）
+
+def my_sort(ch_list, k):
+    for i in range(len(ch_list)):
+        for j in range(len(ch_list)-1):
+            if ch_list[i] > ch_list[j]:
+                ch_list[i], ch_list[j] = ch_list[j], ch_list[i]
+    num = ch_list[0]
+    n = 1
+    for i in ch_list[1:]:
+        if i == num:
+            continue
+        else:
+            n += 1
+            num = i
+            if n == k:
+                return i
+    else:
+        print('输入错误')
+        
+        
+ch_list = [10, 30, 5, 7, 12, 20, 3, 3, 10]
+k = 3
+print(my_sort(ch_list, 3)) 
+
+
