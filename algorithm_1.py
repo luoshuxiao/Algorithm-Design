@@ -1,3 +1,5 @@
+﻿#  算法逻辑训练
+
 from collections import Counter, defaultdict
 
 # one :  以下是用户id对应的技能爱好，比如(0, "Hadoop")表示0号用户爱好是Hadoop
@@ -168,7 +170,7 @@ def str_replace1(ostr, old_str, new_str):
 print(str_replace1(a, 'luo', '##'))
 
 
-# seven : 快速排序算法
+# seven : 冒泡排序算法
 def my_sort(list1):
     for i in range(len(list1)):
         for j in range(i+1, len(list1)):
@@ -179,7 +181,7 @@ def my_sort(list1):
 
 # eight :  100课糖随机分配给10个小朋友，求糖果获得第n多的小朋友获得的糖果（不能用语言自带的排序）
 
-def my_sort(ch_list, k):
+def my_sorted(ch_list, k):
     for i in range(len(ch_list)):
         for j in range(len(ch_list)-1):
             if ch_list[i] > ch_list[j]:
@@ -200,6 +202,82 @@ def my_sort(ch_list, k):
         
 ch_list = [10, 30, 5, 7, 12, 20, 3, 3, 10]
 k = 3
-print(my_sort(ch_list, 3)) 
+print(my_sorted(ch_list, 3))
 
 
+# night ： 归并排序算法
+def split_data(data):
+    if len(data) == 1:
+        return data
+    mid = len(data)//2
+    left_data = data[:mid]
+    right_data = data[mid:]
+    left = split_data(left_data)
+    right = split_data(right_data)
+    return merger_sort(left,right)
+
+def merger_sort(left_list,right_list):
+    result = []
+    while len(left_list)>0 and len(right_list)>0:
+        if left_list[0] >= right_list[0]:
+            result.append(left_list.pop(0))
+        else:
+            result.append(right_list.pop(0))
+    result.extend(left_list)
+    result.extend(right_list)
+    return result
+
+
+test_list = [1, 2, 1, 5, 6, 7, 10, 43, 24, 45, 23]
+print(split_data(test_list))
+
+# ten : 快速排序
+
+def quick_sort(lis):
+    if len(lis) > 1:
+        left, right = [], []
+        mid = lis[len(lis)//2]
+        lis.remove(mid)
+        for i in lis:
+            if i >= mid:
+                right.append(i)
+            else:
+                left.append(i)
+        return quick_sort(left)+[mid]+quick_sort(right)
+    return lis
+
+# eleven : 二分查找
+
+def bin_search(link, val):
+    min = 0
+    max = len(link)-1
+    while min <= max:
+        mid = (min+max)//2
+        if val == link[mid]:
+            return mid
+        elif val > link[mid]:
+            min = mid+1
+        elif val < link[mid]:
+            max = mid-1
+    return None
+
+# twelve : 斐波那契数列
+
+def feibolaqi(num):
+    a, b, c = 0, 1, []
+    for i in range(num-1):
+        c.append(b)
+        a, b = b, a+b
+    c.append(b)
+    return b,c
+其中：b代表第num个斐波那契数，c代表前num个斐波拉契数
+
+# thirteen : python实现双向链表
+
+# fourteen : 判断一个数是不是快乐数
+#     快乐数：对于正整数，每一次将该数替换为它每个
+#             位置上的数字的平方和，然后重复这个过程直到这个数
+#             变为1，也可能是无限循环始终变不到1，如果可以变为1，
+#             那么这个数就是快乐数
+
+# fifteen : python实现二叉树
