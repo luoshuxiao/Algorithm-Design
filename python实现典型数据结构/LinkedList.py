@@ -1,7 +1,7 @@
-# python实现链表数据结构
+"""python实现链表数据结构"""
 
 
-class Node(object):
+class Node():
     """声明节点类"""
     def __init__(self, data):
         self.data = data
@@ -11,8 +11,8 @@ class Node(object):
         return str(self.data)
 
 
-class LinkedList(object):
-
+class LinkedList():
+    """声明链表类"""
     def __init__(self, node):
         self.head = node
 
@@ -36,7 +36,7 @@ class LinkedList(object):
         :return:
         """
         node = Node(data)
-        if type(index) is int:
+        if isinstance(index, int):
             if index == 0:
                 behind_node = self.head
                 self.head = node
@@ -63,10 +63,10 @@ class LinkedList(object):
         index_list = self.get_index(exist_data)
         if not index_list:
             print('该链表未找到您指定的数据，插入失败')
-            return None
-        index_l = [index_list[i]+i for i in range(len(index_list))]
-        for i in index_l:
-            self.insert_by_index(insert_data, i)
+            return
+        index_l = [index_list[num]+num for num in range(len(index_list))]
+        for item in index_l:
+            self.insert_by_index(insert_data, item)
 
     def remove_by_data(self, data):
         """
@@ -78,14 +78,13 @@ class LinkedList(object):
         while before_node:
             if before_node.data == data:
                 index = self.get_index(data)
-                index_list = [index[i]-i for i in range(len(index))]
-                for i in index_list:
-                    self.remove_by_index(i)
+                index_list = [index[num]-num for num in range(len(index))]
+                for item in index_list:
+                    self.remove_by_index(item)
                 break
             before_node = before_node.next
         else:
-            print(f'该链表没有与数据：{data}，匹配的节点，删除失败')
-            return None
+            print(f'该链表没有与输入数据匹配的节点，删除失败')
 
     def remove_by_index(self, index):
         """
@@ -95,19 +94,18 @@ class LinkedList(object):
         """
         before_node = self.head
         size = self.get_size()
-        if type(index) is int:
+        if isinstance(index, int):
             if index == 0:
                 self.head = self.head.next
                 return 1
             elif 0 < index < size:
-                for i in range(index - 1):
+                for _ in range(index - 1):
                     before_node = before_node.next
                 behind_node = before_node.next.next
                 before_node.next = behind_node
                 return 1
             else:
                 print('下标越界,删除失败')
-                return 0
         else:
             print('下标输入有误,删除失败')
 
@@ -117,7 +115,7 @@ class LinkedList(object):
         :param index: 目标节点的下标
         :return: 节点的数据值
         """
-        if type(index) is int:
+        if isinstance(index, int):
             if index == 0:
                 return self.head.data
             if 0 < index < self.get_size():
@@ -138,12 +136,10 @@ class LinkedList(object):
         """
         node = self.head
         index_list = []
-        for i in range(self.get_size()):
+        for item in range(self.get_size()):
             if node.data == data:
-                index_list.append(i)
+                index_list.append(item)
             node = node.next
-        if not index_list:
-            print(f'此链表并无与{data}相等的节点，获取节点下标失败')
         return index_list
 
     def get_size(self):
@@ -159,6 +155,7 @@ class LinkedList(object):
         return size
 
     def __repr__(self):
+        """以列表的形式输出链表"""
         node = self.head
         list_data = []
         while node:
@@ -168,6 +165,7 @@ class LinkedList(object):
 
 
 def main_test():
+    """测试"""
     head = Node(4)
     link = LinkedList(head)
     # link.append_element(6)
@@ -175,20 +173,20 @@ def main_test():
     # link.append_element(300)
     # link.append_element(6)
     # print(link)
-    # # print(link.get_size())
+    # print(link.get_size())
     # print(link.get_index(6))
-    # # print(link.get_data(0))
-    # # link.remove_by_data(6)
-    # # print(link)
-    # # link.remove_by_index(1)
-    # # print(link)
+    # print(link.get_data(0))
+    # link.remove_by_data(6)
+    # print(link)
+    # link.remove_by_index(1)
+    # print(link)
     # link.insert_by_index(44444, 0)
     # print(link)
-    # # link.insert_by_index(33333, 2)
-    # # print(link)
+    # link.insert_by_index(33333, 2)
+    # print(link)
     link.insert_by_data(33333, 6)
     print(link)
 
 
 if __name__ == '__main__':
-   main_test()
+    main_test()
