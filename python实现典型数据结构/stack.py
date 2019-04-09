@@ -1,4 +1,6 @@
-# python实现堆栈数据结构
+﻿# -*- coding: utf-8 -*-
+
+"""python实现堆栈数据结构"""
 
 
 class Stack(object):

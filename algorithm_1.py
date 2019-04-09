@@ -1,4 +1,6 @@
-﻿#  算法逻辑训练
+﻿# -*- coding: utf-8 -*-
+
+"""算法逻辑训练""""
 
 from collections import Counter, defaultdict
 

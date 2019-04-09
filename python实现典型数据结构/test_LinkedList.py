@@ -1,6 +1,11 @@
+﻿# -*- coding: utf-8 -*-
+
+"""链表的单元测试"""
+
 import unittest
 
-from LinkedList import LinkedList, Node
+from LinkedList import Node
+from LinkedList import LinkedList
 
 head = Node(1)
 
