@@ -51,9 +51,11 @@ class LinkedList():
                 before_node.next = node
                 node.next = behind_node
             else:
-                print('下标越界，插入失败')
+                # print('下标越界，插入失败')
+                return -1
         else:
-            print('下标输入有误,插入失败')
+            # print('下标输入有误,插入失败')
+            return -1
 
     def insert_by_data(self, insert_data, exist_data):
         """
@@ -64,8 +66,8 @@ class LinkedList():
         """
         index_list = self.get_index(exist_data)
         if not index_list:
-            print('该链表未找到您指定的数据，插入失败')
-            return
+            # print('该链表未找到您指定的数据，插入失败')
+            return -1
         index_l = [index_list[num]+num for num in range(len(index_list))]
         for item in index_l:
             self.insert_by_index(insert_data, item)
@@ -86,7 +88,8 @@ class LinkedList():
                 break
             before_node = before_node.next
         else:
-            print(f'该链表没有与输入数据匹配的节点，删除失败')
+            # print('该链表没有与输入数据匹配的节点，删除失败')
+            return -1
 
     def remove_by_index(self, index):
         """
@@ -107,9 +110,11 @@ class LinkedList():
                 before_node.next = behind_node
                 return 1
             else:
-                print('下标越界,删除失败')
+                # print('下标越界,删除失败')
+                return -1
         else:
-            print('下标输入有误,删除失败')
+            # print('下标输入有误,删除失败')
+            return -1
 
     def get_data(self, index):
         """
@@ -126,9 +131,11 @@ class LinkedList():
                     node = node.next
                 return node.data
             else:
-                print('下标超出范围，获取节点数据失败')
+                # print('下标超出范围，获取节点数据失败')
+                return -1
         else:
-            print('请输入int类型下标')
+            # print('请输入int类型下标')
+            return -1
 
     def get_index(self, data):
         """
